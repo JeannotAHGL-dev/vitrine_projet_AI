@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlantScan - Détection de Carences Nutritives par IA</title>
+    <title>PlantScan - Détection du Stress Abiotique des Mangroves par IA</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -22,48 +22,54 @@
 <body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-green-500 selection:text-white">
 
     <!-- HEADER / HERO -->
-    <header class="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-green-950/30 to-darkBg">
-        <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col items-center text-center">
+    <header class="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-green-950/40 to-darkBg">
+        <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 flex flex-col items-center text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold uppercase tracking-wider mb-6">
-                🌿 Grand Nokoué • Bénin
+                🌿 Lac Nokoué • Bénin (Mangroves)
             </div>
             <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6">
                 Plant<span class="text-green-500">Scan</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-10">
-                Détection automatisée des carences nutritives sur les feuilles de plantes par vision par ordinateur et Deep Learning.
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed">
+                Système de vision par ordinateur intelligent pour la détection du stress abiotique chez les mangroves. Conçu pour un futur embarquement sur drone et un suivi en temps réel.
             </p>
             <div class="flex flex-wrap gap-4 justify-center">
-                <a href="#pipeline" class="bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-green-900/40">
-                    Découvrir le Pipeline
+                <a href="#vision" class="bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-green-900/40">
+                    Découvrir le Projet
                 </a>
                 <a href="#resultats" class="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-6 py-3 rounded-xl transition-all">
-                    Voir les Résultats
+                    Voir les Performances
                 </a>
             </div>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
+    <main class="max-w-6xl mx-auto px-6 py-16 space-y-28">
 
-        <!-- LE PROJET -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- VISION & OBJECTIF (DRONE & EDGE AI) -->
+        <section id="vision" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
-                <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white border-l-4 border-green-500 pl-4">
-                    Le Projet
+                <div class="inline-block px-3 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
+                    Objectif & Vision Cible
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white">
+                    Surveillance aérienne et temps réel des mangroves
                 </h2>
                 <p class="text-slate-300 leading-relaxed">
-                    Les carences nutritives sont difficiles à repérer à l'œil nu sur le terrain. <strong>PlantScan</strong> automatise ce diagnostic à partir d'une simple image ou vidéo, en combinant segmentation précise et classification par apprentissage profond.
+                    Le projet cible les écosystèmes fragiles des mangroves du <strong>lac Nokoué</strong>. L'objectif est de concevoir un modèle léger et performant capable d'être embarqué sur <strong>drone</strong> pour cartographier et détecter le stress abiotique en continu.
+                </p>
+                <p class="text-slate-300 leading-relaxed">
+                    L'application mobile actuelle sert de prototype de test terrain pour valider rapidement les inférences à partir de simples photos ou vidéos.
                 </p>
                 <div class="grid grid-cols-2 gap-4 pt-2">
                     <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <span class="block text-2xl font-black text-green-500 mb-1">96.83%</span>
-                        <span class="text-xs text-slate-400 uppercase font-semibold">Accuracy de validation</span>
+                        <span class="block text-2xl font-black text-green-500 mb-1">86 %</span>
+                        <span class="text-xs text-slate-400 uppercase font-semibold">mAP@50 (YOLOv8)</span>
                     </div>
                     <div class="bg-white/5 p-4 rounded-xl border border-white/10">
-                        <span class="block text-2xl font-black text-green-500 mb-1">4 Classes</span>
-                        <span class="text-xs text-slate-400 uppercase font-semibold">Sain, Azote, Potassium, N_K</span>
+                        <span class="block text-2xl font-black text-green-500 mb-1">96,6 %</span>
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Précision (ResNet50)</span>
                     </div>
                 </div>
             </div>
@@ -73,60 +79,78 @@
             </div>
         </section>
 
-        <!-- PIPELINE TECHNIQUE & YOLO -->
+        <!-- DATASET & PIPELINE TECHNIQUE -->
         <section id="pipeline" class="space-y-12">
-            <div class="text-center max-w-xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white mb-3">Architecture & Segmentation</h2>
-                <p class="text-slate-400 text-sm">Un traitement séquentiel en deux étapes clés : YOLOv8 pour isoler les feuilles et ResNet50 pour classifier l'état nutritionnel.</p>
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-block px-3 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
+                    Méthodologie & Pipeline
+                </div>
+                <h2 class="text-3xl font-black tracking-tight text-white">Données et Architecture d'Inférence</h2>
+                <p class="text-slate-400 text-sm">Combinaison d'un dataset Kaggle et de 500 photos de terrain annotées sous Roboflow pour alimenter un pipeline à deux étages.</p>
             </div>
 
             <!-- Schéma Pipeline -->
-            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-center space-y-4">
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 text-center space-y-4">
                 <img src="images/pipeline.png" alt="Architecture du pipeline" class="mx-auto rounded-lg max-h-80 object-contain">
-                <p class="text-xs text-slate-400">Figure 12 : Architecture globale du pipeline d'inférence</p>
+                <p class="text-xs text-slate-400">Figure 12 : Schéma séquentiel du pipeline (Image/Vidéo ➔ Segmentation ➔ Classification ➔ Diagnostic)</p>
             </div>
 
-            <!-- Comportement YOLO -->
+            <!-- Détails des deux étapes -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4">
-                    <h3 class="text-lg font-bold text-white">Comportement de YOLO sur image naturelle</h3>
-                    <img src="images/inference.png" alt="Avant et après inférence YOLO" class="rounded-lg w-full object-cover">
-                    <p class="text-xs text-slate-400">Figure 8 : Avant inférence (gauche) et après inférence avec boîtes englobantes (droite)</p>
+                    <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center font-black text-lg">1</div>
+                    <h3 class="text-xl font-bold text-white">Segmentation (YOLOv8)</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        YOLOv8 isole et extrait avec précision les feuilles de mangrove sur des images complexes ou des flux vidéo, atteignant un <strong>mAP@50 de 86 %</strong>.
+                    </p>
+                    <img src="images/inference.png" alt="Avant et après inférence YOLO" class="rounded-lg w-full object-cover mt-2">
+                    <p class="text-xs text-slate-400 text-center">Figure 8 : Comportement de YOLO (avant inférence vs boîtes englobantes)</p>
                 </div>
+
                 <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4">
-                    <h3 class="text-lg font-bold text-white">Segmentation et Masques Foliaires</h3>
-                    <img src="images/segmentation.png" alt="Segmentation YOLO avancé" class="rounded-lg w-full object-cover">
-                    <p class="text-xs text-slate-400">Figure 7 : Segmentation YOLO avancé sur images test (masques foliaires)</p>
+                    <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center font-black text-lg">2</div>
+                    <h3 class="text-xl font-bold text-white">Classification (ResNet50)</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Le modèle ResNet50 prend le relais sur les masques foliaires pour classifier les différents types de stress et carences nutritives.
+                    </p>
+                    <img src="images/segmentation.png" alt="Segmentation YOLO avancé" class="rounded-lg w-full object-cover mt-2">
+                    <p class="text-xs text-slate-400 text-center">Figure 7 : Masques foliaires extraits sur l'ensemble de test</p>
                 </div>
             </div>
         </section>
 
         <!-- COURBES D'APPRENTISSAGE -->
         <section class="space-y-12">
-            <div class="text-center max-w-xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white mb-3">Courbes d'Entraînement</h2>
-                <p class="text-slate-400 text-sm">Évolution des pertes et de la précision lors de l'apprentissage des modèles.</p>
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-block px-3 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
+                    Entraînement & Optimisation
+                </div>
+                <h2 class="text-3xl font-black tracking-tight text-white">Courbes d'Apprentissage des Modèles</h2>
+                <p class="text-slate-400 text-sm">Suivi de la convergence et des performances durant l'apprentissage.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4">
-                    <h3 class="text-lg font-bold text-white">YOLOv8</h3>
+                    <h3 class="text-lg font-bold text-white">Modèle YOLOv8</h3>
                     <img src="images/yolo-curves.png" alt="Courbes pertes YOLOv8" class="rounded-lg w-full object-contain">
                     <p class="text-xs text-slate-400">Figure 6 : Courbes des pertes d'entraînement et de validation YOLOv8</p>
                 </div>
                 <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4">
-                    <h3 class="text-lg font-bold text-white">ResNet50</h3>
+                    <h3 class="text-lg font-bold text-white">Modèle ResNet50</h3>
                     <img src="images/resnet-curves.png" alt="Courbes ResNet50" class="rounded-lg w-full object-contain">
-                    <p class="text-xs text-slate-400">Figure 9 : Courbes d'apprentissage ResNet50 (Pertes et Accuracy)</p>
+                    <p class="text-xs text-slate-400">Figure 9 : Courbes d'apprentissage ResNet50 (pertes et accuracy, époque max 40)</p>
                 </div>
             </div>
         </section>
 
-        <!-- RESULTATS & METRIQUES -->
+        <!-- RESULTATS & EVALUATION -->
         <section id="resultats" class="space-y-12">
-            <div class="text-center max-w-xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white mb-3">Performances & Évaluation</h2>
-                <p class="text-slate-400 text-sm">Métriques détaillées et matrices de confusion sur l'ensemble de test.</p>
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-block px-3 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
+                    Résultats Scientifiques
+                </div>
+                <h2 class="text-3xl font-black tracking-tight text-white">Performances sur le Jeu de Test</h2>
+                <p class="text-slate-400 text-sm">Évaluation rigoureuse sur les 4 classes de déficiences.</p>
             </div>
 
             <!-- Tableau des métriques -->
@@ -143,83 +167,103 @@
                     <tbody class="divide-y divide-white/5 text-sm">
                         <tr>
                             <td class="p-4 font-bold text-white">Healthy (Saine)</td>
-                            <td class="p-4 text-slate-300">96.8 %</td>
-                            <td class="p-4 text-slate-300">96.2 %</td>
-                            <td class="p-4 text-slate-300">96.5 %</td>
+                            <td class="p-4 text-slate-300">96,8 %</td>
+                            <td class="p-4 text-slate-300">96,2 %</td>
+                            <td class="p-4 text-slate-300">96,5 %</td>
                         </tr>
                         <tr>
                             <td class="p-4 font-bold text-white">N — Azote</td>
-                            <td class="p-4 text-slate-300">97.1 %</td>
-                            <td class="p-4 text-slate-300">95.7 %</td>
-                            <td class="p-4 text-slate-300">96.4 %</td>
+                            <td class="p-4 text-slate-300">97,1 %</td>
+                            <td class="p-4 text-slate-300">95,7 %</td>
+                            <td class="p-4 text-slate-300">96,4 %</td>
                         </tr>
                         <tr>
                             <td class="p-4 font-bold text-white">K — Potassium</td>
-                            <td class="p-4 text-slate-300">95.3 %</td>
-                            <td class="p-4 text-slate-300">97.6 %</td>
-                            <td class="p-4 text-slate-300">96.4 %</td>
+                            <td class="p-4 text-slate-300">95,3 %</td>
+                            <td class="p-4 text-slate-300">97,6 %</td>
+                            <td class="p-4 text-slate-300">96,4 %</td>
                         </tr>
                         <tr>
-                            <td class="p-4 font-bold text-white">N_K</td>
-                            <td class="p-4 text-slate-300">97.6 %</td>
-                            <td class="p-4 text-slate-300">97.1 %</td>
-                            <td class="p-4 text-slate-300">97.3 %</td>
+                            <td class="p-4 font-bold text-white">N_K (Combinée)</td>
+                            <td class="p-4 text-slate-300">97,6 %</td>
+                            <td class="p-4 text-slate-300">97,1 %</td>
+                            <td class="p-4 text-slate-300">97,3 %</td>
                         </tr>
                         <tr class="bg-white/5 font-bold">
                             <td class="p-4 text-white">Moyenne pondérée</td>
                             <td class="p-4 text-slate-400">—</td>
                             <td class="p-4 text-slate-400">—</td>
-                            <td class="p-4 text-green-400">96.6 %</td>
+                            <td class="p-4 text-green-400">96,6 %</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- Matrice de confusion -->
-            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4 text-center">
-                <h3 class="text-lg font-bold text-white">Matrice de Confusion</h3>
-                <img src="images/confusion-matrix.png" alt="Matrice de confusion" class="mx-auto rounded-lg max-h-96 object-contain">
-                <p class="text-xs text-slate-400">Figure 10 : Matrice de confusion du ResNet50 avancé sur l'ensemble de test (Valeurs et Pourcentages)</p>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 space-y-4 text-center">
+                <h3 class="text-xl font-bold text-white">Matrice de Confusion</h3>
+                <p class="text-sm text-slate-300 max-w-2xl mx-auto">
+                    La diagonale fortement marquée confirme la robustesse de la classification des différents stress abiotiques.
+                </p>
+                <img src="images/confusion-matrix.png" alt="Matrice de confusion" class="mx-auto rounded-lg max-h-96 object-contain mt-4">
+                <p class="text-xs text-slate-400">Figure 10 : Matrice de confusion du ResNet50 (valeurs et pourcentages)</p>
             </div>
         </section>
 
         <!-- INTERPRETABILITE GRAD-CAM -->
         <section class="space-y-6">
-            <h2 class="text-2xl font-black tracking-tight text-white border-l-4 border-green-500 pl-4">Interprétabilité (Grad-CAM)</h2>
-            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4 text-center">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-block px-3 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
+                    Explicabilité
+                </div>
+                <h2 class="text-3xl font-black tracking-tight text-white">Interprétabilité avec Grad-CAM</h2>
+                <p class="text-slate-400 text-sm">Visualisation des zones de la feuille activant la décision du modèle.</p>
+            </div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 space-y-6 text-center">
+                <p class="text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    L'utilisation de <strong>Grad-CAM</strong> permet de valider que le réseau se focalise bien sur les zones de nécrose ou de décoloration caractéristiques du stress des mangroves.
+                </p>
                 <img src="images/gradcam.png" alt="Visualisation Grad-CAM" class="mx-auto rounded-lg max-h-80 object-contain">
-                <p class="text-xs text-slate-400">Figure 11 : Visualisation Grad-CAM montrant les zones de la feuille ayant influencé la prédiction</p>
+                <p class="text-xs text-slate-400">Figure 11 : Visualisation Grad-CAM (Image originale, Heatmap, Superposition)</p>
             </div>
         </section>
 
-        <!-- VALIDATION MOBILE -->
+        <!-- APPLICATION & API FASTAPI -->
         <section class="space-y-6">
-            <h2 class="text-2xl font-black tracking-tight text-white border-l-4 border-green-500 pl-4">Application Mobile & Validation</h2>
-            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4 text-center">
-                <img src="images/app-validation.png" alt="Résultats de diagnostic sur feuilles de validation" class="mx-auto rounded-lg max-h-96 object-contain">
-                <p class="text-xs text-slate-400">Figure 14 : Résultats de diagnostic sur des feuilles de validation via l'application mobile</p>
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-block px-3 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider">
+                    Déploiement & Prototype
+                </div>
+                <h2 class="text-3xl font-black tracking-tight text-white">API FastAPI & Application Mobile</h2>
+                <p class="text-slate-400 text-sm">Mise en ligne du service d'inférence et interface de test mobile.</p>
+            </div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 space-y-6 text-center">
+                <p class="text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Le backend est propulsé par une API <strong>FastAPI</strong> performante, connectée à un prototype d'application mobile sous <strong>Flutter</strong> pour tester le diagnostic rapide sur le terrain.
+                </p>
+                <img src="images/app-validation.png" alt="Résultats de diagnostic mobile" class="mx-auto rounded-lg max-h-96 object-contain">
+                <p class="text-xs text-slate-400">Figure 14 : Exemples de rapports de diagnostic générés sur feuilles de validation</p>
             </div>
         </section>
 
         <!-- TECHNOLOGIES -->
         <section class="space-y-6">
-            <h2 class="text-2xl font-black tracking-tight text-white border-l-4 border-green-500 pl-4">Technologies Utilisées</h2>
+            <h2 class="text-2xl font-black tracking-tight text-white border-l-4 border-green-500 pl-4">Stack Technique</h2>
             <div class="flex flex-wrap gap-3">
                 <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">YOLOv8</span>
                 <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">ResNet50</span>
                 <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">Grad-CAM</span>
                 <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">PyTorch</span>
-                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">OpenCV</span>
+                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">Roboflow</span>
+                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">FastAPI</span>
                 <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">Flutter</span>
-                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">Django REST Framework</span>
-                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold text-slate-300">PostgreSQL</span>
             </div>
         </section>
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-white/10 mt-20 bg-black/40">
+    <footer class="border-t border-white/10 mt-28 bg-black/40">
         <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 uppercase tracking-widest font-bold">
             <p>© 2026 PlantScan. Tous droits réservés.</p>
             <div class="flex gap-6">
@@ -230,4 +274,4 @@
     </footer>
 
 </body>
-</html> 
+</html>
